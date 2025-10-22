@@ -1,4 +1,3 @@
-Perfeito, Daniel 🙌. Aqui está o texto já formatado em Markdown para você usar direto no README.md, com títulos, listas e blocos de código bem organizados:
 # 📚 Sistema de Cadastro de Livros
 
 Este projeto é uma aplicação desenvolvida em **Laravel** para gerenciar livros, autores e assuntos.  
