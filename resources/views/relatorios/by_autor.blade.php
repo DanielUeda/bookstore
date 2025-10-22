@@ -9,43 +9,61 @@
             font-size: 12px;
             color: #333;
             margin: 20px;
+            line-height: 1.4;
         }
         header {
             text-align: center;
-            border-bottom: 1px solid #000;
-            margin-bottom: 20px;
-            padding-bottom: 8px;
+            border-bottom: 2px solid #444;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
         }
         header h1 {
             margin: 0;
-            font-size: 18px;
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         header p {
             font-size: 11px;
-            color: #555;
+            color: #666;
+            margin-top: 4px;
         }
         .autor {
             font-weight: bold;
-            margin-top: 20px;
-            margin-bottom: 5px;
+            margin-top: 25px;
+            margin-bottom: 8px;
             font-size: 14px;
+            color: #222;
+            border-left: 4px solid #444;
+            padding-left: 6px;
         }
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            table-layout: fixed; /* força largura fixa */
         }
         th, td {
-            border: 1px solid #444;
+            border: 1px solid #bbb;
             padding: 6px 8px;
             text-align: left;
+            word-wrap: break-word; /* quebra o texto longo */
         }
         th {
-            background-color: #f5f5f5;
+            background-color: #f0f0f0;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 11px;
         }
         tr:nth-child(even) td {
             background-color: #fafafa;
         }
+        /* Definindo larguras fixas para cada coluna */
+        th:nth-child(1), td:nth-child(1) { width: 40%; } /* Título */
+        th:nth-child(2), td:nth-child(2) { width: 15%; } /* Ano */
+        th:nth-child(3), td:nth-child(3) { width: 15%; } /* Valor */
+        th:nth-child(4), td:nth-child(4) { width: 30%; } /* Assuntos */
+
         footer {
             position: fixed;
             bottom: 0;
@@ -65,6 +83,10 @@
             text-decoration: none;
             border-radius: 3px;
             font-size: 12px;
+            margin-left: 5px;
+        }
+        .btn:hover {
+            background: #222;
         }
         @media print {
             .no-print { display: none !important; }
@@ -100,17 +122,15 @@
                 @foreach($livros as $livro)
                     <tr>
                         <td>{{ $livro->livro_titulo }}</td>
-                        <td>
-                            @if($livro->AnoPublicacao)
-                                {{ $livro->AnoPublicacao }}
-                            @endif
-                        </td>
+                        <td>{{ $livro->AnoPublicacao ?? '-' }}</td>
                         <td>
                             @if(is_numeric($livro->Valor))
                                 R$ {{ number_format($livro->Valor, 2, ',', '.') }}
+                            @else
+                                -
                             @endif
                         </td>
-                        <td>{{ $livro->assuntos }}</td>
+                        <td>{{ $livro->assuntos ?: '-' }}</td>
                     </tr>
                 @endforeach
             </tbody>
