@@ -26,7 +26,7 @@ Estrutura principal
 - routes/web.php → Rotas da aplicação
 
 Para subir os containers, na raiz do projeto rode o seguinte comando:
-- docker-compose up -d
+- docker compose up -d --build
 
 Isso vai criar:
 - Um container com PHP + Laravel (app)
