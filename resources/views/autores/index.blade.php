@@ -6,10 +6,6 @@
 
     <a href="{{ route('autores.create') }}" class="btn btn-primary mb-3">Novo Autor</a>
 
-    @if(session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
-    @endif
-
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -38,5 +34,10 @@
             @endforeach
         </tbody>
     </table>
+    
+    <div class="d-flex justify-content-center mt-3">
+    {{ $autores->links('pagination.pt-br') }}
+    </div>
+
 </div>
 @endsection

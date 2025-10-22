@@ -6,10 +6,6 @@
 
     <a href="{{ route('assuntos.create') }}" class="btn btn-primary mb-3">Novo Assunto</a>
 
-    @if(session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
-    @endif
-
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -35,5 +31,9 @@
             @endforeach
         </tbody>
     </table>
+    <div class="d-flex justify-content-center mt-3">
+        {{ $assuntos->links('pagination.pt-br') }}
+    </div>
+
 </div>
 @endsection
